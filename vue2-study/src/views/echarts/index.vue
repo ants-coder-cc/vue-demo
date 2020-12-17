@@ -1,9 +1,7 @@
 <template>
 	<div class="content row-flex-start" style="min-width:1500px;ovorflow-x:auto">
-		<div>qqqq</div>
 		<div class="left_map" id="left_map" @click="showChinaMap"></div>
 		<div class="right_opetate row-center" id="right_opetate"></div>
-		<div>11111</div>
 	</div>
 </template>
 
@@ -66,14 +64,11 @@ export default {
 		//显示中国地图
 		showChinaMap() {
 			let option = this.getMapOpt();
-			console.log("option", option);
 			this.map.setOption(option, true);
 		},
 		//显示各省地图
 		getProvinceMapOpt(provinceAlphabet) {
-			console.log("objectaxios", axios);
 			axios.get(`http://127.0.0.1:5500/province/${provinceAlphabet}.json`).then((s) => {
-				console.log("object", s);
 				echarts.registerMap(provinceAlphabet, s.data);
 				let option = this.getMapOpt(provinceAlphabet);
 				this.map.setOption(option, true);
@@ -81,9 +76,7 @@ export default {
 		},
 		initMap() {
 			var dom = document.getElementById("left_map");
-			console.log("dom", dom);
 			this.map = echarts.init(dom);
-			console.log("this.map", this.map);
 			let option = this.getMapOpt();
 			if (option && typeof option === "object") {
 				this.map.setOption(option, true);
