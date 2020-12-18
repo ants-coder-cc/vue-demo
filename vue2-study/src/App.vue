@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+		<router-view></router-view>
 		<!-- <div>
 			<a-date-picker @change="onChange" />
 			<br />
@@ -9,7 +10,7 @@
 			<br />
 			<a-week-picker placeholder="Select week" @change="onChange" />
 		</div> -->
-		<a-button type="primary">antd按钮</a-button>
+		<!-- <a-button type="primary">antd按钮</a-button> -->
 		<!-- <a-breadcrumb>
 			<a-breadcrumb-item>Home</a-breadcrumb-item>
 			<a-breadcrumb-item><a href="">Application Center</a></a-breadcrumb-item>
@@ -61,18 +62,22 @@
 		<!-- <a-pagination v-model="current" :total="50" show-less-items /> -->
 		<!-- <img alt="Vue logo" src="./assets/logo.png" />
 		<HelloWorld msg="Welcome to Your Vue.js App" /> -->
-		<echarts-Test />
+		<!-- <echarts-Test /> -->
+		<img alt="Vue logo" src="./assets/logo.png" />
+		<HelloWorld msg="Welcome to Your Vue.js App" />
+		name:
+		<h1>{{ $store.state.name }}</h1>
 	</div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-import echartsTest from "./views/echarts/index.vue";
+import HelloWorld from "./components/HelloWorld.vue";
+// import echartsTest from "./views/echarts/index.vue";
 export default {
 	name: "App",
 	components: {
-		// HelloWorld,
-		echartsTest,
+		HelloWorld,
+		// echartsTest,
 	},
 	data() {
 		return {
