@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>canvas将图片转为base64</title>
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- <img src="./login.jpg" id="img" style="width: 100%; height: 100%" />
+		<canvas id="load_area" width="100%" height="224px"></canvas> -->
+	</body>
+	<script type="text/javascript">
+		var appendCanvas = function () {
+			var body = document.body;
+			var canvas = document.createElement("canvas");
+			body.appendChild(canvas);
+			return canvas;
+		};
+
+		var createImage = function (url) {
+			var img = new Image();
+			img.setAttribute("crossOrigin", "anonymous");
+			img.src = url;
+			return img;
+		};
+
+		var imageToBase64 = function (url) {
+			var canvas = appendCanvas();
+			var context = canvas.getContext("2d");
+			var tmpImage = createImage(url);
+			var base64Str = "";
+			tmpImage.onload = function () {
+				canvas.width = tmpImage.width;
+				canvas.height = tmpImage.height;
+				context.drawImage(tmpImage, 0, 0);
+				base64Str = canvas.toDataURL("image/jpg");
+				console.log(base64Str);
+			};
+		};
+		imageToBase64("./login.jpg");
+	</script>
+</html>
