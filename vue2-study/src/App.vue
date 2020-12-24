@@ -89,6 +89,7 @@ export default {
 			//赋值
 			console.log(res);
 		});
+		console.log(window);
 	},
 };
 </script>
