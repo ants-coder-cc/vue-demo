@@ -1,5 +1,7 @@
 # vue2.x-study
 
+https://mp.weixin.qq.com/s?__biz=Mzg5NDEyMzA2NQ==&mid=2247486363&idx=1&sn=3c8d9604721260616b87c1255a1750b4&chksm=c02526cdf752afdbf9571b39ea1518c15449a23757c6b0081f67fe1bb87d747b42c32e9e3a96&scene=126&sessionid=1608121891&key=8e2a66076f3022c8fe865d1e8baaab96790f68f8fd7b3b76bcfb8d9f11156ef08e8a9577a4885fffc572f07d1f4d3079eeb9efe81d9f29b0539695c305569fa44d5a1f5121f2f725310253dcb452e9ed9eb05ef98b3ae6b4168c98b872d678f0c934dd4b93a3029bc32ac0f95380b8fc551ec1e0b799818590ced464bad43f01&ascene=1&uin=MjQyMDE4NA%3D%3D&devicetype=Windows+10+x64&version=63000039&lang=zh_CN&exportkey=A3qDDjI74Otb6VnEqTd8%2BTc%3D&pass_ticket=OOJ6bazCLpAbWPdfPFUm5arGzBbpXwEV0ENB4TNO7Wb6jr8jyy06s%2FWIugzHlc39&wx_header=0
+
 ## Project setup
 
 ```
@@ -244,10 +246,27 @@ permissions
 类型：Object
 说明：permissions 每一个 key 对应权限功能的验证，当 key 的值为 true 时，代表具有权限，若 key 为 false，配合 v-permission 指令，可以隐藏相应的 DOM。
 在这里贴一下路由跳转时权限验证的代码：
-import router from '@/router';import store from '@/store';import storage from 'store';import util from '@/libs/utils';
-// 进度条 import NProgress from 'nprogress';import 'nprogress/nprogress.css';
+import router from '@/router';
+import store from '@/store';
+import storage from 'store';
+import util from '@/libs/utils';
+// 进度条
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 const loginRoutePath = '/user/login';const defaultRoutePath = '/home';
-/\*\* _ 路由拦截 _ 权限验证 \*/router.beforeEach(async (to, from, next) => { // 进度条 NProgress.start(); // 验证当前路由所有的匹配中是否需要有登录验证的 if (to.matched.some((r) => r.meta.auth)) { // 是否存有 token 作为验证是否登录的条件 const token = storage.get('ACCESS_TOKEN'); if (token && token !== 'undefined') { // 是否处于登录页面 if (to.path === loginRoutePath) { next({ path: defaultRoutePath }); // 查询是否储存用户信息 } else if (Object.keys(store.state.system.user.info).length === 0) { store.dispatch('system/user/getInfo').then(() => { next(); }); } else { next(); } } else { // 没有登录的时候跳转到登录界面 // 携带上登陆成功之后需要跳转的页面完整路径 next({ name: 'Login', query: { redirect: to.fullPath, }, }); NProgress.done(); } } else { // 不需要身份校验 直接通过 next(); }});
+/\*\* _ 路由拦截 _ 权限验证 \*/
+router.beforeEach(async (to, from, next) => { // 进度条 NProgress.start();
+// 验证当前路由所有的匹配中是否需要有登录验证的
+if (to.matched.some((r) => r.meta.auth)) {
+// 是否存有 token 作为验证是否登录的条件
+const token = storage.get('ACCESS_TOKEN');
+if (token && token !== 'undefined') {
+// 是否处于登录页面
+if (to.path === loginRoutePath) {
+next({ path: defaultRoutePath });
+// 查询是否储存用户信息
+}
+else if (Object.keys(store.state.system.user.info).length === 0) { store.dispatch('system/user/getInfo').then(() => { next(); }); } else { next(); } } else { // 没有登录的时候跳转到登录界面 // 携带上登陆成功之后需要跳转的页面完整路径 next({ name: 'Login', query: { redirect: to.fullPath, }, }); NProgress.done(); } } else { // 不需要身份校验 直接通过 next(); }});
 router.afterEach((to) => { // 进度条 NProgress.done(); util.title(to.meta.title);});
 
 页面开发

@@ -4,7 +4,7 @@ require('./check-versions')()
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
-const rm = require('rimraf')
+const rm = require('rimraf')  // 我们要复盖原先的文件，因为hash不同复盖不了，所以要清除
 const path = require('path')
 const chalk = require('chalk')
 const webpack = require('webpack')

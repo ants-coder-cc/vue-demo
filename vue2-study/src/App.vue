@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<router-view></router-view>
+		
 		<!-- <div>
 			<a-date-picker @change="onChange" />
 			<br />
@@ -67,6 +67,7 @@
 		<HelloWorld msg="Welcome to Your Vue.js App" />
 		name:
 		<h1>{{ $store.state.name }}</h1>
+		<router-view></router-view>
 	</div>
 </template>
 

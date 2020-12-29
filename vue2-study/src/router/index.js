@@ -13,16 +13,21 @@ const routes = [
 ];
 const router = new Router({
 	// mode: "history",
-	linkActiveClass: "active",
+	// linkActiveClass: "active",
 	// base: process.env.BASE_URL,
 	routes,
 });
-router.beforeEach(() => {
+router.beforeEach((to, from, next) => {
+	console.log(to);
+	console.log(from);
+	console.log(next);
+	next();
 	console.log("router.beforeEach");
 	NProgress.start();
 });
-router.afterEach(() => {
-	console.log("router.afterEach");
-	NProgress.done();
-});
+// router.afterEach((to, from, next) => {
+// 	console.log("router.afterEach");
+// 	NProgress.done();
+// 	next();
+// });
 export default router;
