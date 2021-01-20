@@ -3,7 +3,7 @@ const home = () => import("../views/home/index");
 const login = () => import("../views/login/index");
 
 const routes = [
-	{ path: "/", redirect: "/home" },
+	{ path: "/", redirect: "/" },
 	{
 		path: "/home",
 		name: "home",

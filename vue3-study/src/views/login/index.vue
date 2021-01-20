@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<p>index</p>
-		<button @click="toHome">toHome</button>
+		<button @click="toHome">toHomeqqq</button>
 	</div>
 </template>
 <script>
