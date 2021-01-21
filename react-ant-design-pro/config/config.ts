@@ -34,6 +34,12 @@ export default defineConfig({
       component: '../layouts/BlankLayout',
       routes: [
         {
+          path: '/demo',
+          name: 'demo-测试',
+          icon: 'smile',
+          component: './demo/Index'
+        },
+        {
           path: '/user',
           component: '../layouts/UserLayout',
           routes: [
@@ -59,6 +65,12 @@ export default defineConfig({
               component: './user/register',
             },
             {
+              path: '/demo',
+              name: 'demo-测试',
+              icon: 'smile',
+              component: './demo/Index'
+            },
+            {
               component: '404',
             },
           ],
@@ -72,6 +84,12 @@ export default defineConfig({
             {
               path: '/',
               redirect: '/dashboard/analysis',
+            },
+            {
+              path: '/demo',
+              name: 'demo-测试',
+              icon: 'smile',
+              component: './demo/Index'
             },
             {
               path: '/dashboard',
@@ -331,6 +349,7 @@ export default defineConfig({
   title: false,
   ignoreMomentLocale: true,
   proxy: proxy[REACT_APP_ENV || 'dev'],
+  publicPath: '/dist/',
   manifest: {
     basePath: '/',
   },
