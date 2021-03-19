@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body>
+    <!-- class的本质是function -->
+    <script>
+        // 类的定义
+        // 匿名类
+        let Example = class{
+            constructor(a) {
+                this.a = a;
+            }
+        }
+        // 命名类
+        let Example = class Example {
+            constructor(a) {
+                this.a = a;
+            }
+        }
+        // 类声明
+        class Point{
+            constructor(a) {
+                this.a = a;
+            }
+        }
+    </script>
+</body>
+</html>
