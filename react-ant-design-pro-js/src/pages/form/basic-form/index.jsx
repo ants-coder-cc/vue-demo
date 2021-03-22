@@ -49,6 +49,7 @@ const BasicForm = (props) => {
   };
 
   const onFinish = (values) => {
+    console.log('onFinish',values);
     const { dispatch } = props;
     dispatch({
       type: 'formAndbasicForm/submitRegularForm',

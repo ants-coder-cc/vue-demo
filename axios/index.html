@@ -12,16 +12,66 @@
 	<body>
         <div class="app-container">
             <button class="get">get</button>
-            <button>post</button>
-            <button>del</button>
-            <button>put</button>
+            <button class="post">post</button>
+            <button class="del">del</button>
+            <button class="put">put</button>
         </div>
         <script>
+            axios.defaults.method = 'GET';
+            axios.defaults.baseURL = 'http://localhost:3000/';
+            console.log(axios.defaults);
+            const http = axios.create({
+                baseURL:'https://api.apiopen.top',
+                timeout:2000
+            })
+            http({
+                url:'/getJoke'
+            }).then(res => {
+                console.log('httpres',res)
+            })
             $('.get').on('click',function() {
                 console.log(axios);
                 axios({
-                    method:'get',
+                    url: 'posts'
+                }).then(res => {
+                    console.log(res);
+                    console.log(res.data);
+                    console.log(res.config.baseURL);
+                })
+            })
+            // 提交
+            $('.post').on('click',function() {
+                console.log(axios);
+                axios({
+                    method:'POST',
+                    url: 'http://localhost:3000/posts',
+                    data: {
+                        title:'今天天气不错',
+                        author:'test'
+                    }
+                }).then(res => {
+                    console.log(res);
+                })
+            })
+            $('.del').on('click',function() {
+                console.log(axios);
+                axios({
+                    method:'del',
                     url: 'http://localhost:3000/posts'
+                }).then(res => {
+                    console.log(res);
+                })
+            })
+            //  更新
+            $('.put').on('click',function() {
+                console.log(axios);
+                axios({
+                    method:'put',   
+                    url: 'http://localhost:3000/posts/3',
+                    data:{
+                        title:'今天天气不错',
+                        author:'今天天气不错'
+                    }
                 }).then(res => {
                     console.log(res);
                 })

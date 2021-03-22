@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>axios</title>
+		<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="app-container">
+			<button class="get">get</button>
+			<button class="post">post</button>
+			<button class="del">del</button>
+			<button class="put">put</button>
+            <button class="cancel">cancel</button>
+		</div>
+		<script>
+
+            // 请求拦截响应，可以在拦截器中修改config的配置信息
+			// axios.interceptors.request.use(
+			// 	function (config) {
+			// 		// Do something before request is sent
+			// 		console.log("请求拦截器成功");
+			// 		return config;
+			// 	},
+			// 	function (error) {
+			// 		// Do something with request error
+			// 		console.log("请求拦截器失败");
+			// 		return Promise.reject(error);
+			// 	}
+			// );
+			// Add a response interceptor
+			// axios.interceptors.response.use(
+			// 	function (response) {
+			// 		// Any status code that lie within the range of 2xx cause this function to trigger
+			// 		// Do something with response data
+			// 		console.log("响应拦截器成功");
+			// 		return response;
+			// 	},
+			// 	function (error) {
+			// 		console.log("响应拦截器失败");
+			// 		return Promise.reject(error);
+			// 	}
+			// );
+			axios.defaults.method = "GET";
+			axios.defaults.baseURL = "http://localhost:3000/";
+			console.log(axios.defaults);
+            // 创建请求的实例，可以根据不同的实例访问不同域名下的网络资源
+			const http = axios.create({
+				baseURL: "https://api.apiopen.top",
+				timeout: 2000,
+			});
+			http({
+				url: "/getJoke",
+			}).then((res) => {
+				console.log("httpres", res);
+			});
+            let cancel = null;
+			$(".get").on("click", function () {
+                // 检测上一次请求是否完成
+                if(cancel !== null){
+                    cancel();
+                }
+				console.log(axios);
+				axios({
+					url: "posts",
+                    cancelToken: new axios.CancelToken(function(c){
+                        console.log('c========>',c);
+                        cancel = c;
+                    })
+				}).then((res) => {
+                    cancel = null;
+					console.log(res);
+					console.log(res.data);
+					console.log(res.config.baseURL);
+				});
+			});
+            // 取消请求
+            $(".cancel").on("click", function () {
+                console.log('cancel');
+                cancel(); 
+            })
+			// 提交
+			$(".post").on("click", function () {
+				console.log(axios);
+				axios({
+					method: "POST",
+					url: "http://localhost:3000/posts",
+					data: {
+						title: "今天天气不错",
+						author: "test",
+					},
+				}).then((res) => {
+					console.log(res);
+				});
+			});
+			$(".del").on("click", function () {
+				console.log(axios);
+				axios({
+					method: "del",
+					url: "http://localhost:3000/posts",
+				}).then((res) => {
+					console.log(res);
+				});
+			});
+			//  更新
+			$(".put").on("click", function () {
+				console.log(axios);
+				axios({
+					method: "put",
+					url: "http://localhost:3000/posts/3",
+					data: {
+						title: "今天天气不错",
+						author: "今天天气不错",
+					},
+				}).then((res) => {
+					console.log(res);
+				});
+			});
+		</script>
+	</body>
+</html>
