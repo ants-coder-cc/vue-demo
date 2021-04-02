@@ -15,8 +15,28 @@
             <button class="post">post</button>
             <button class="del">del</button>
             <button class="put">put</button>
+            <button class="option">option</button>
         </div>
         <script>
+            function Person(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+            // Person.prototype.sayHi = function() {
+            //     console.log(`${this.name} ++++++ ${this.age}`)
+            // }
+            // let p1 = new Person('qq','2222');
+            // p1.sayHi();
+            // class Person{
+            //     constructor(name,age) {
+            //         this.name = name;
+            //         this.age = age;
+            //     }
+            // }
+            // class Student extends Person{
+                
+            // }
+            console.dir(axios);
             axios.defaults.method = 'GET';
             axios.defaults.baseURL = 'http://localhost:3000/';
             console.log(axios.defaults);
@@ -49,6 +69,19 @@
                         title:'今天天气不错',
                         author:'test'
                     }
+                }).then(res => {
+                    console.log(res);
+                })
+            })
+            $('.option').on('click',function() {
+                // console.log(axios);
+                axios({
+                    method:'option',
+                    // url: 'http://localhost:3000/posts',
+                    // data: {
+                    //     title:'今天天气不错',
+                    //     author:'test'
+                    // }
                 }).then(res => {
                     console.log(res);
                 })

@@ -71,7 +71,7 @@ class Person {
     }
 }
 let p = new Person('zhangsan');
-p.setName('lisi');
+p.setName('list');
 console.log(p);
 //  类 继承
 class Son extends Person {
@@ -103,3 +103,7 @@ console.log(Son.age);
 // 接口
 // 泛型
 // 模块
+// const numberArr:(number | string)[] = [1,2,3,'4'];
+// 元祖
+const numberArr:[number,number,string] = [1,1,'2'];
+
