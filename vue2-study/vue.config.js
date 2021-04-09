@@ -1,6 +1,7 @@
 // Vue.config.js 配置选项
 
 module.exports = {
+	lintOnSave: false,  //  忽略eslint
 	// 选项
 
 	//  基本路径

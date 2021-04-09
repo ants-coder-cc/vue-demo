@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
-		
+		<a-button type="primary" @click="handleAdd">antd按钮</a-button>
+		<a-input placeholder="Basic usage" :value="inputVal"/>
 		<!-- <div>
 			<a-date-picker @change="onChange" />
 			<br />
@@ -66,7 +67,7 @@
 		<img alt="Vue logo" src="./assets/logo.png" />
 		<HelloWorld msg="Welcome to Your Vue.js App" />
 		name:
-		<h1>{{ $store.state.name }}</h1>
+		<!-- <h1>{{ $store.state.name }}</h1> -->
 		<router-view></router-view>
 	</div>
 </template>
@@ -82,16 +83,28 @@ export default {
 	},
 	data() {
 		return {
+			inputVal:0,
 			current: ["mail"],
 		};
 	},
-	created() {
-		this.$axios.get("http://127.0.0.1:5500/vue2-study/anhui.json").then((res) => {
-			//赋值
-			console.log(res);
-		});
-		console.log(window);
+	watch:{
+		inputVal(newName, oldName) {
+			console.log('newName====>',newName);
+			console.log('oldName====>',oldName);
+		}
 	},
+	created() {
+		// this.$axios.get("http://127.0.0.1:5500/vue2-study/anhui.json").then((res) => {
+		// 	//赋值
+		// 	console.log(res);
+		// });
+		// console.log(window);
+	},
+	methods:{
+		handleAdd(){
+			this.inputVal++
+		}
+	}
 };
 </script>
 
