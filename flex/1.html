@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex</title>
+    <style>
+        /* 768    992   1200    1920 */
+        /* 页面元素的rem计算公式   rem = 页面元素值（px）/ (屏幕宽度) / 划分的分数 */
+        /* 750 / 75 = 10 */
+        /* 50rem = 750px */
+        /* rem 适配 */
+        /* set 1rem = viewWidth / 10 */
+        /* flex布局 */
+        /* 容器的属性 */
+        /*  flex-direction  主轴方向 
+            flex-wrap       是否换行
+            flex-flow    flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+            justify-content   项目在主轴上的对齐方式。 justify-content: flex-start | flex-end | center | space-between | space-around;
+            align-items       项目在交叉轴上如何对齐。 align-items: flex-start | flex-end | center | baseline | stretch;
+            align-content     定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。 flex-start | flex-end | center | space-between | space-around | stretch;*/
+        
+        #flex-box {
+            display: flex;
+            /* flex-direction: row; */
+            /* flex-direction: row-reverse; */
+            flex-direction: row;
+            /* width: 120px; */
+            /* flex-wrap: wrap-reverse; */
+            flex-wrap: wrap;
+            /* width: 200px; */
+            justify-content: space-around;
+            align-items: center;
+            height: 100px;
+            /* align-items: stretch; */
+            /* align-content: flex-end; */
+            /* flex-direction: column-reverse; */
+            background: red;
+        }
+        
+        #flex-box div {
+            /* flex-basis 的优先级比 width 更高 */
+            flex-basis: 100px;
+            /* width: 50px; */
+            height: 50px;
+            background: pink;
+        }
+        
+        #flex-box :nth-child(1) {
+            background: chocolate;
+            flex-grow: 0.5;
+            align-self: flex-start;
+        }
+        /* #flex-box {} */
+    </style>
+</head>
+
+<body>
+    <div id="flex-box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+
+</html>
