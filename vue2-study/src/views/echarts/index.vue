@@ -13,10 +13,18 @@ echarts.registerMap("china", china);
 var provinces = ["shanghai", "hebei", "shanxi", "neimenggu", "liaoning", "jilin", "heilongjiang", "jiangsu", "zhejiang", "anhui", "fujian", "jiangxi", "shandong", "henan", "hubei", "hunan", "guangdong", "guangxi", "hainan", "sichuan", "guizhou", "yunnan", "xizang", "shanxi1", "gansu", "qinghai", "ningxia", "xinjiang", "beijing", "tianjin", "chongqing", "xianggang", "aomen", "taiwan"];
 var provincesText = ["上海", "河北", "山西", "内蒙古", "辽宁", "吉林", "黑龙江", "江苏", "浙江", "安徽", "福建", "江西", "山东", "河南", "湖北", "湖南", "广东", "广西", "海南", "四川", "贵州", "云南", "西藏", "陕西", "甘肃", "青海", "宁夏", "新疆", "北京", "天津", "重庆", "香港", "澳门", "台湾"];
 export default {
+	beforeCreate () {
+		console.log('子组件beforeCreate');
+	},
 	created() {
+		console.log('子组件created');
 		this.cityOpt = provincesText;
 	},
+	beforeMounted () {
+		console.log('子组件beforeMounted');
+	},
 	mounted() {
+		console.log('子组件mounted');
 		this.$nextTick(() => {
 			this.initMap();
 		});

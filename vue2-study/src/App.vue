@@ -69,6 +69,7 @@
 		name:
 		<!-- <h1>{{ $store.state.name }}</h1> -->
 		<router-view></router-view>
+		<input type="text" v-focus>
 	</div>
 </template>
 
@@ -93,7 +94,17 @@ export default {
 			console.log('oldName====>',oldName);
 		}
 	},
+	beforeMount(){
+		console.log('父组件beforeMount');
+	},
+	mounted(){
+		console.log('父组件mounted');
+	},
+	beforeCreate () {
+		console.log('父组件beforeCreate');
+	},
 	created() {
+		console.log('父组件created');
 		// this.$axios.get("http://127.0.0.1:5500/vue2-study/anhui.json").then((res) => {
 		// 	//赋值
 		// 	console.log(res);
