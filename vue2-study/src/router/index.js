@@ -4,6 +4,8 @@ import NProgress from "nprogress";
 //组件
 import echarts from "@/views/echarts/index.vue";
 import Home from "@/views/home/index.vue";
+import About from "@/views/about/index.vue";
+import Partents from "@/views/partents/index.vue";
 
 Vue.use(Router);
 //routes 定义路由的数字 路由和组件的映射关系
@@ -16,6 +18,14 @@ const routes = [{
     {
         path: "/home",
         component: Home,
+    },
+    {
+        path: "/about",
+        component: About,
+    },
+    {
+        path: "/partents",
+        component: Partents,
     },
     // 重定向
     {

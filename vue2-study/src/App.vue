@@ -19,12 +19,12 @@
 					<router-link to="/index">index</router-link>
 				</a-menu-item>
 				<a-menu-item key="setting:2">
-					<router-link to="/home">home</router-link>
+					<router-link to="/about">about</router-link>
 				</a-menu-item>
 				</a-menu-item-group>
 				<a-menu-item-group title="Item 2">
 				<a-menu-item key="setting:3">
-					<router-link to="/home">home</router-link>
+					<router-link to="/partents">partents</router-link>
 				</a-menu-item>
 				<a-menu-item key="setting:4">
 					<router-link to="/home">home</router-link>
@@ -85,7 +85,8 @@ export default {
 	methods:{
 		handleAdd(){
 			this.inputVal++
-		}
+		},
+
 	}
 };
 </script>
