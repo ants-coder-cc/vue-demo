@@ -9,12 +9,20 @@ Vue.use(Router);
 //routes 定义路由的数字 路由和组件的映射关系
 const routes = [{
         path: "/echarts",
-        component: echarts,
+        // component: echarts,
+        component: () =>
+            import ("@/views/echarts/index.vue")
     },
     {
         path: "/home",
         component: Home,
     },
+    // 重定向
+    {
+        path: '/',
+        redirect: '/home'
+    }
+
 ];
 const router = new Router({
     // mode: "history",
