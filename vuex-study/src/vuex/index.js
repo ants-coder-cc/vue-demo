@@ -15,7 +15,7 @@ const mutations = {
         state.name = payload.name
     }
 }
-const action = {
+const actions = {
     // 无参
     changeNameAsync(context) {
         // 示例说明我们可以通过context.state来获取store中的变量
@@ -34,8 +34,27 @@ const action = {
         }, 1000)
     }
 }
+const getters = {
+    //  不带参数getters
+    formatterName: state => {
+        let postfix = '';
+        if (state.name === '张三') {
+            postfix = '最棒';
+        }
+        return state.name + postfix
+    },
+    //  带参数getters
+    customFormatterName: (state) => (val) => {
+        let postfix = '';
+        if (state.name === '张三') {
+            postfix = val;
+        }
+        return state.name + postfix
+    }
+}
 export default new Vuex.Store({
     state,
     mutations,
-    action
+    actions,
+    getters
 })
