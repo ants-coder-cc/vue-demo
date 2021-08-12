@@ -3,7 +3,7 @@
 		<!-- <HelloWorld msg="Welcome to Your Vue.js App" />  -->
 		<!-- <echarts-Test /> -->
 		<!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
-		<!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+		<HelloWorld msg="Welcome to Your Vue.js App" />
 		<!-- name: -->
 		<!-- <h1>{{ $store.state.name }}</h1> -->
 		<div>
@@ -87,7 +87,10 @@ export default {
 			this.inputVal++
 		},
 
-	}
+	},
+	 provide: {
+      for: "demo"
+    },
 };
 </script>
 

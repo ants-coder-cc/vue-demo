@@ -13,6 +13,6 @@ class CommentForm extends React.Component {
     }
 }
 
-export { 
-    CommentForm as default 
+export {
+    CommentForm as default
 }

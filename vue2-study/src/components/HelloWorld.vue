@@ -41,8 +41,10 @@ export default {
 	props: {
 		msg: String,
 	},
+	inject: ['for'],
+
 	beforeCreate () {
-		console.log('子组件beforeCreate');
+		console.log('子组件beforeCreate====>this.for',this.for);
 	},
 	created() {
 		console.log('子组件created');
@@ -53,6 +55,7 @@ export default {
 	
 	mounted() {
 		console.log('子组件mounted');
+		console.log('子组件mounted====>this.for',this.for);
 	},
 	beforeUpdate(){
 		console.log('子组件beforeUpdate');
